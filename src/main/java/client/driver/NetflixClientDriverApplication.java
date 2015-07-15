@@ -3,6 +3,7 @@ package client.driver;
 import java.util.Random;
 import java.util.concurrent.Future;
 
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.AsyncResult;
@@ -16,6 +17,15 @@ import client.driver.dto.MicroClientServiceDTO;
 public class NetflixClientDriverApplication {
 
     public static void main(String[] args) throws InterruptedException {
+        // start the driver threads
+        // startDriver();
+
+        // start the web app
+        SpringApplication.run(NetflixClientDriverApplication.class, args);
+    }
+
+    @Async
+    public void startDriver() {
         NetflixClientDriverApplication application = new NetflixClientDriverApplication();
 
         application.invokeData();
